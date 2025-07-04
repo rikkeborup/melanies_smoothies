@@ -1,4 +1,5 @@
 import streamlit as st
+import requests
 from snowflake.snowpark.functions import col
 
 def clear_multi():
@@ -17,6 +18,9 @@ def insert_and_clear(insert_stmt, name_on_order):
     insert_sql(insert_stmt,name_on_order)
     clear_multi()
     clear_text()
+
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
 
 # Write directly to the app
 st.title(f":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
